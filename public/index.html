@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <script src="/socket.io/socket.io.js"></script> 
+    <script src="app.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="canvas.js"> </script>
+    <script src="/lib/cuon-utils.js"></script>
+    <script src="/lib/webgl-debug.js"></script>
+    <script src="/lib/webgl-utils.js"></script>
+    <script src="/lib/point.js"></script>
+  </head>
+  <body>
+
+    <div id="container">
+      <section id="loginPage">
+          <form>
+            <label for="username">Username:</label>
+            <p id="warning"></p>
+            <input type="text" id="username" name="username"><br><br>
+            <input type="button" value="Join Game" id="joinGameButton">
+          </form>
+      </section>
+
+      <section id="gamePage" class="hidden">
+        <div class="connected-users">
+          <div class="connected-users-header">
+            <p id="greeting"></p>
+            <button id="quitButton">Quit</button>
+          </div>
+          <h1>Connected Users</h1>
+          <ul id="userList"></ul>
+          <div class="connected-users-input">
+            <button id="eraseButton">Erase</button>
+            <button id="undoButton">Undo</button>
+            <button id="sizeButton">Size</button>
+            <button id="colorButton">Color</button>
+          </div>
+        </div>
+        <div class="canvas-container">
+          <canvas id="webgl" width="500" height="500" style="border:1px solid #000000;"></canvas>
+        </div>
+        <div class="chatbox">
+          <div class="chatbox-messages">
+            <ul id="messageList"></ul>
+          </div>
+          <div class="chatbox-input">
+            <input type="text" id="chatInput" placeholder="Type your message here...">
+            <button id="sendButton">Send</button>
+          </div>
+        </div>
+      </section>
+      
+    </div>
+
+  </body>
+</html>

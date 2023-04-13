@@ -1,0 +1,158 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    margin: 0;
+  }
+  
+  #container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }  
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  input[type="button"] {
+    cursor: pointer;
+  }
+  
+  .hidden {
+    display: none;
+  }
+
+  #gamePage {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid #ccc;
+  }
+  
+  .greeting-container {
+    display: flex;
+    align-items: center;
+  }
+
+  #quitButton {
+    margin-left: 10px;
+    justify-content: right;
+  }
+  
+  .canvas-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  .connected-users {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    flex-direction: column;
+    height: 500px;
+    width: 250px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .connected-users-header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    background-color: #f1f1f1;
+    outline: none;
+  }
+
+  .connected-users-input {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    background-color: #f1f1f1;
+    outline: none;
+   
+  }
+
+
+  .connected-users h1 {
+    text-align: center;
+  }
+
+  .connected-users ul {
+    list-style-type: none;
+    height: 400px;
+  }
+
+  .chatbox {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 500px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 5px;
+  }
+  
+  .chatbox-header {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .chatbox-messages {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+  }
+  
+  .chatbox-messages ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .chatbox-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  .chatbox-input input {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px 8px;
+    outline: none;
+  }
+  
+  .chatbox-input button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
