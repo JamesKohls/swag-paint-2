@@ -77,8 +77,8 @@ io.on('connection', (socket) => {
 
     socket.on('request shapes list', () => {
         //console.log(shapesList)
-        var position = shapesList.map(a => a.position);
-        socket.emit('receive shapes list', position);
+        //var position = shapesList.map(a => a.position);
+        socket.emit('receive shapes list', shapesList);
     });
 
     socket.on('request erase', () => {

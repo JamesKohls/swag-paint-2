@@ -11,6 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const eraseButton = document.getElementById('eraseButton');
     const greeting = document.getElementById('greeting');
     const warning = document.getElementById('warning');
+    // size modal consts
+    const sizeButton = document.getElementById('sizeButton');
+    const circleModal = document.getElementById('circleModal');
+    const circles = document.querySelectorAll('.circle');
+    // color modal consts
+    const colorButton = document.getElementById('colorButton');
+    const colorModal = document.getElementById('colorModal');
+    const colorCircles = document.querySelectorAll('.color-circle');
 
     if (joinGameButton) {
         joinGameButton.addEventListener('click', () => {
@@ -30,13 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     // code to recieve what's currently on screen
                     socket.emit('request shapes list');
                     socket.on('receive shapes list', (shapeList) => {
+
                         var len = shapeList.length;
                         for (var i = 0; i < len; i++) {
                             let point = new Point();
-                            point.position = shapeList[i];
-                            point.color = [0.5, 0.5, 0.5, 1.0];
-                            point.size = 5;
-
+                            point.position = shapeList[i].position;
+                            point.color = shapeList[i].color;
+                            point.size = shapeList[i].size;
                             g_shapesList.push(point)
                         }
                         renderAllShapes();
@@ -57,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if(sendButton) {
+    if (sendButton) {
         sendButton.addEventListener('click', () => {
             const message = document.getElementById('chatInput').value;
             socket.emit('send message', message);
@@ -104,6 +112,47 @@ document.addEventListener('DOMContentLoaded', () => {
             socket.emit('request erase');
         });
     }
+
+    if (sizeButton) {
+        sizeButton.addEventListener('click', () => {
+            circleModal.style.display = 'block';
+        });
+        circles.forEach((circle) => {
+            circle.addEventListener('click', (event) => {
+                const clickedCircle = event.target;
+                const circleSize = clickedCircle.getAttribute('data-size');
+                updateBrushSize(circleSize)
+                circleModal.style.display = 'none';
+            });
+        });
+    }
+
+    if (colorButton) {
+        colorButton.addEventListener('click', () => {
+            colorModal.style.display = 'block';
+        });
+
+        colorCircles.forEach((circle) => {
+            circle.addEventListener('click', (event) => {
+                const clickedCircle = event.target;
+                const circleColor = clickedCircle.getAttribute('data-color');
+
+                updateBrushColor( hexToRgb(circleColor) )
+
+                colorModal.style.display = 'none';
+            });
+        });
+    }
+
+    // Close the color modal if the user clicks outside the modal content
+    window.addEventListener('click', (event) => {
+        if (event.target == colorModal) {
+            colorModal.style.display = 'none';
+        }
+        if (event.target == circleModal) {
+            circleModal.style.display = 'none';
+        }
+    });
 
 
     socket.on('receive shape update', (shape) => {

@@ -23,6 +23,9 @@ let a_Position;
 let u_FragColor;
 let u_Size;
 
+let selectedSize = 5.0
+let selectedColor = [0.0, 0.0, 0.0, 1.0];
+
 function setupWebGL() {
   canvas = document.getElementById('webgl');
   gl = canvas.getContext("webgl", { preserveDrawingBuffer: true });
@@ -58,9 +61,8 @@ function click(ev, check) {
     let [x, y] = covertCoordiantesEventToGL(ev);
     let point = new Point();
     point.position = [x, y];
-    point.color = [0.5, 0.5, 0.5, 1.0];
-    point.size = 5;
-
+    point.color = selectedColor;
+    point.size = selectedSize;
     //g_shapesList.push(point);
     socket.emit('push shape update', point);
     //renderAllShapes()
@@ -84,4 +86,32 @@ function renderAllShapes() {
     for (var i = 0; i < len; i++) {
         g_shapesList[i].render();
     }
+}
+
+function updateBrushSize(option){
+  switch(option){
+    case "1":
+      selectedSize = 5.0
+      break;
+    case "2":
+      selectedSize = 10.0
+      break;
+    case "3":
+      selectedSize = 20.0
+      break;
+  }
+}
+
+function updateBrushColor(rgb){
+  selectedColor = [ rgb[0]/255,rgb[1]/255,rgb[2]/255,1.0]
+}
+
+function hexToRgb(hex) {
+  hex = hex.replace('#', '');
+  var bigint = parseInt(hex, 16);
+  var r = (bigint >> 16) & 255;
+  var g = (bigint >> 8) & 255;
+  var b = bigint & 255;
+
+  return [r,g,b];
 }
